@@ -1,3 +1,7 @@
+ESX = nil
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 local wasDead = false
 local webhookUrl = "https://discordapp.com/api/webhooks/your_webhook_id/your_webhook_token"
 
