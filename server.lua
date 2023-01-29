@@ -39,3 +39,21 @@ AddEventHandler('esx:onPlayerDeath', function()
     ['@identifier'] = player
   })
 end)
+
+-- UPDATE CHECKER
+
+local version = '0.0.1'
+local currentScript = 'No Emotes In Vehicles'
+
+PerformHttpRequest("https://api.github.com/repos/SimpliAj/anticombatlogg_saj/releases/latest", function(err, text, headers)
+    if err == 200 then
+        local data = json.decode(text)
+        if data.tag_name ~= version then
+            print(currentScript .. ' is outdated, version ' .. data.tag_name .. ' is now available to download.')
+        else
+            print(currentScript .. ' is up to date.')
+        end
+    else
+        print('Error checking for updates to ' .. currentScript .. ' (' .. err .. ')')
+    end
+end, "GET")
